@@ -1,3 +1,20 @@
-{
-  "note": "請替換為完整題庫 JSON，詳見部署指南附錄"
-}
+[
+  { "id": "birthDate", "order": 1, "label": "被照顧者出生日期 (YYYY/MM/DD)", "type": "date", "required": true },
+  { "id": "officialProof", "order": 2, "label": "您是否持有以下官方證明？", "type": "checkbox", "required": true, "options": ["身心障礙手冊／證明", "重大傷病", "低收入戶", "中低收入戶", "無"] },
+  { "id": "proofDetail", "order": 3, "label": "若有證明，請填等級或疾病名稱", "type": "text", "required": false },
+  { "id": "dementia", "order": 4, "label": "是否經醫師診斷失智症？", "type": "radio", "required": true, "options": ["是", "否", "懷疑未確診"] },
+  { "id": "chronicDiseases", "order": 5, "label": "目前常見慢性疾病（可複選）", "type": "checkbox", "required": true, "options": ["高血壓", "糖尿病", "COPD/氣喘", "心衰竭", "中風後遺症", "洗腎", "癌症(晚期)", "其他"] },
+  { "id": "mainDept", "order": 6, "label": "目前主要就醫科別（可複選）", "type": "checkbox", "required": false, "options": ["家醫", "內科", "神經科", "腫瘤科", "安寧緩和科", "其他"] },
+  { "id": "visitPlace", "order": 7, "label": "最常就醫地點", "type": "radio", "required": false, "options": ["醫學中心", "區域/地區醫院", "診所", "尚未固定"] },
+  { "id": "caregiver", "order": 8, "label": "目前主要照顧者", "type": "radio", "required": true, "options": ["家屬 18–69 歲", "家屬 ≥70 歲", "外籍看護", "居服員", "無固定"] },
+  { "id": "district", "order": 9, "label": "居住地行政區", "type": "select", "required": true, "options": [] },
+  { "id": "height", "order": 10, "label": "身高（公分）", "type": "number", "required": true },
+  { "id": "weight", "order": 11, "label": "體重（公斤）", "type": "number", "required": true },
+  { "id": "weightChange", "order": 12, "label": "近 3 個月體重變化百分比 (負值代表減重)", "type": "number", "required": true },
+  { "id": "intakeReduced", "order": 13, "label": "最近一週飲食量是否比平常減少？", "type": "radio", "required": true, "options": ["是", "否"] },
+  { "id": "adlAssistance", "order": 14, "label": "日常生活中需要他人協助的項目（可複選）", "type": "checkbox", "required": true, "options": ["吃飯", "更衣", "盥洗", "如廁", "平地行走", "轉移"] },
+  { "id": "erHosp", "order": 15, "label": "過去 3 個月急診或住院次數", "type": "radio", "required": true, "options": ["0", "1", "2 次以上"] },
+  { "id": "tubes", "order": 16, "label": "目前是否使用以下醫療管路？（可複選）", "type": "checkbox", "required": true, "options": ["鼻胃管", "導尿管", "氣切", "靜脈輸液", "壓瘡傷口", "無"] },
+  { "id": "recentSymptoms", "order": 17, "label": "最近是否出現以下情況？（可複選）", "type": "checkbox", "required": true, "options": ["喘", "痰多", "大小便失禁", "褥瘡", "以上皆無"] },
+  { "id": "falls", "order": 18, "label": "最近一年是否曾發生跌倒？", "type": "radio", "required": false, "options": ["是", "否"] }
+]
