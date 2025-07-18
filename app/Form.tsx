@@ -1,5 +1,5 @@
 // app/Form.tsx
-import questions from "@/data/questions.json";
+import questions from "../data/questions.json";
 
 export default function Form() {
   return (
