@@ -1,9 +1,6 @@
 // app/Form.tsx
-import questionsJson from "../data/questions.json" assert { type: "json" };
+import raw from "../data/questions.json";
 
-/**
- * 題目型別定義（對應 questions.json）
- */
 interface Question {
   id: string;
   order: number;
@@ -13,10 +10,20 @@ interface Question {
   options?: string[];
 }
 
-// 轉型成陣列方便 .map
-const questions = questionsJson as unknown as Question[];
+/**
+ * 確保匯入的 JSON 真的是陣列；若不是，就顯示錯誤訊息
+ */
+const questions: Question[] = Array.isArray(raw) ? (raw as Question[]) : [];
 
 export default function Form() {
+  if (questions.length === 0) {
+    return (
+      <div className="text-center py-20 text-red-600">
+        ⚠️ `data/questions.json` 目前不是題目陣列，請依部署指南「附錄」貼上完整 18 題 JSON！
+      </div>
+    );
+  }
+
   return (
     <form className="space-y-6 max-w-xl mx-auto py-10">
       {questions
@@ -25,29 +32,35 @@ export default function Form() {
           <div key={q.id} className="flex flex-col">
             <label className="font-medium mb-1">{q.label}</label>
 
-            {/* 根據題型輸出對應輸入框 */}
-            {q.type === "text" || q.type === "number" || q.type === "date" ? (
+            {["text", "number", "date"].includes(q.type) && (
               <input
                 name={q.id}
                 type={q.type}
                 required={q.required}
                 className="border rounded p-2"
               />
-            ) : null}
+            )}
 
-            {q.type === "radio" && q.options?.map((opt) => (
-              <label key={opt} className="inline-flex items-center gap-2">
-                <input type="radio" name={q.id} value={opt} required={q.required} />
-                {opt}
-              </label>
-            ))}
+            {q.type === "radio" &&
+              q.options?.map((opt) => (
+                <label key={opt} className="inline-flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name={q.id}
+                    value={opt}
+                    required={q.required}
+                  />
+                  {opt}
+                </label>
+              ))}
 
-            {q.type === "checkbox" && q.options?.map((opt) => (
-              <label key={opt} className="inline-flex items-center gap-2">
-                <input type="checkbox" name={q.id} value={opt} />
-                {opt}
-              </label>
-            ))}
+            {q.type === "checkbox" &&
+              q.options?.map((opt) => (
+                <label key={opt} className="inline-flex items-center gap-2">
+                  <input type="checkbox" name={q.id} value={opt} />
+                  {opt}
+                </label>
+              ))}
 
             {q.type === "select" && (
               <select
