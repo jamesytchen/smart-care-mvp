@@ -7,7 +7,18 @@
   { "id": "mainDept", "order": 6, "label": "目前主要就醫科別（可複選）", "type": "checkbox", "required": false, "options": ["家醫", "內科", "神經科", "腫瘤科", "安寧緩和科", "其他"] },
   { "id": "visitPlace", "order": 7, "label": "最常就醫地點", "type": "radio", "required": false, "options": ["醫學中心", "區域/地區醫院", "診所", "尚未固定"] },
   { "id": "caregiver", "order": 8, "label": "目前主要照顧者", "type": "radio", "required": true, "options": ["家屬 18–69 歲", "家屬 ≥70 歲", "外籍看護", "居服員", "無固定"] },
-  { "id": "district", "order": 9, "label": "居住地行政區", "type": "select", "required": true, "options": [] },
+  { "id": "district",
+  "order": 9,
+  "label": "居住地行政區",
+  "type": "select",
+  "required": true,
+  "options": [
+    "臺北市", "新北市", "桃園市", "臺中市", "臺南市", "高雄市",
+    "基隆市", "新竹市", "嘉義市", "新竹縣", "苗栗縣", "彰化縣",
+    "南投縣", "雲林縣", "嘉義縣", "屏東縣", "宜蘭縣", "花蓮縣",
+    "臺東縣", "澎湖縣", "金門縣", "連江縣"
+  ]
+},
   { "id": "height", "order": 10, "label": "身高（公分）", "type": "number", "required": true },
   { "id": "weight", "order": 11, "label": "體重（公斤）", "type": "number", "required": true },
   { "id": "weightChange", "order": 12, "label": "近 3 個月體重變化百分比 (負值代表減重)", "type": "number", "required": true },
